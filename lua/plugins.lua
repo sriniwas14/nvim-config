@@ -45,6 +45,10 @@ return packer.startup(function(use)
 	-- INSTALL PACKAGES HERE
 	use({ 'rose-pine/neovim', as = 'rose-pine' })
 	use({ 'nvim-lua/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} })
+	use({
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	})
 	-- use({ 'williamboman/mason.nvim', as = 'mason' })
 	use ({
 	    "williamboman/mason.nvim",
@@ -53,8 +57,6 @@ return packer.startup(function(use)
 	})
 	use('w0rp/ale')
 	use('tpope/vim-fugitive')
-	use('vim-airline/vim-airline')
-	use('vim-airline/vim-airline-themes')
 	use('mbbill/undotree')
 	use('shougo/deoplete.nvim')
 	use ({
@@ -90,8 +92,6 @@ return packer.startup(function(use)
 	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
 	  require("toggleterm").setup()
 	end}
-
-
 	use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
 	use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 	use 'romgrk/barbar.nvim'
