@@ -61,6 +61,12 @@ return packer.startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	})
+	use {
+	  'nvim-tree/nvim-tree.lua',
+	  requires = {
+	    'nvim-tree/nvim-web-devicons', -- optional
+	  },
+	}
 
 	-- LSP
 	use {
@@ -79,6 +85,16 @@ return packer.startup(function(use)
 	    {'L3MON4D3/LuaSnip'},
 	  }
 	}
+
+	-- Terminal
+	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+	  require("toggleterm").setup()
+	end}
+
+
+	use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
+	use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+	use 'romgrk/barbar.nvim'
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
