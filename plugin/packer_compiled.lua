@@ -94,6 +94,14 @@ _G.packer_plugins = {
     path = "/home/nightwing/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["dashboard-nvim"] = {
+    config = { "\27LJ\2\n“\a\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\vconfig\1\0\0\vheader\1\0\0\1\22\0\0\"                ..:::::::::..'           ..:::aad8888888baa:::..*        .::::d:?88888888888?::8b::::.,      .:::d8888:?88888888??a888888b:::..    .:::d8888888a8888888aa8888888888b:::./   ::::dP::::::::88888888888::::::::Yb::::0  ::::dP:::::::::Y888888888P:::::::::Yb::::1 ::::d8:::::::::::Y8888888P:::::::::::8b::::2.::::88::::::::::::Y88888P::::::::::::88::::.2:::::Y8baaaaaaaaaa88P:T:Y88aaaaaaaaaad8P:::::2:::::::Y88888888888P::|::Y88888888888P:::::::2::::::::::::::::888:::|:::888::::::::::::::::2`:::::::::::::::8888888888888b::::::::::::::'1 :::::::::::::::88888888888888::::::::::::::0  :::::::::::::d88888888888888:::::::::::::/   ::::::::::::88::88::88:::88::::::::::::.    `::::::::::88::88::88:::88::::::::::',      `::::::::88::88::P::::88::::::::'*        `::::::88::88:::::::88::::::''           ``:::::::::::::::::::''1Black Mana      ``:::::::::''     Black Mana\nsetup\14dashboard\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/nightwing/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
+    url = "https://github.com/glepnir/dashboard-nvim"
+  },
   ["deoplete.nvim"] = {
     loaded = true,
     path = "/home/nightwing/.local/share/nvim/site/pack/packer/start/deoplete.nvim",
@@ -192,6 +200,13 @@ time([[Defining packer_plugins]], false)
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
