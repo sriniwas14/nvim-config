@@ -55,6 +55,8 @@ return packer.startup(function(use)
 	    "williamboman/mason-lspconfig.nvim",
 	    "neovim/nvim-lspconfig",
 	})
+
+	use('prettier/vim-prettier')
 	use('w0rp/ale')
 	use('tpope/vim-fugitive')
 	use('mbbill/undotree')
@@ -70,6 +72,10 @@ return packer.startup(function(use)
 	  },
 	}
 
+	-- Persistence
+--    use {
+--		'ahri/vim-sesspit',
+--	}
 	-- LSP
 	use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -138,3 +144,4 @@ return packer.startup(function(use)
 		require("packer").sync()
 	end
 end)
+

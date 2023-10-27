@@ -7,9 +7,13 @@ vim.keymap.set('n', '<leader>p', function() vim.cmd('Telescope find_files') end,
 vim.keymap.set('n', '<leader>f', function() vim.cmd('Telescope live_grep') end, opt)
 
 
-vim.keymap.set('n', '<leader>s', function() vim.cmd('bnext') end, opt)
-vim.keymap.set('n', '<leader>a', function() vim.cmd('bprev') end, opt)
-vim.keymap.set('n', '<leader>q', function() vim.cmd('bd | bprev') end, opt)
+vim.keymap.set('n', '<leader>s', function() vim.cmd('BufferNext') end, opt)
+vim.keymap.set('n', '<leader>a', function() vim.cmd('BufferPrevious') end, opt)
+vim.keymap.set('n', '<leader>d', function() vim.cmd('bd | bprev') end, opt)
+vim.keymap.set('n', '<leader>qs', function() 
+		vim.cmd('SessPit') 
+		print("Session Saved!")
+end, opt)
 
 vim.keymap.set('n', '<leader>]', function()
 	-- TODO
@@ -52,5 +56,3 @@ cmp.setup({
     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
   })
 })
-
-
