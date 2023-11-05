@@ -13,3 +13,6 @@ require('mason-lspconfig').setup({
     lsp_zero.default_setup,
   },
 })
+
+-- Format on Save
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]

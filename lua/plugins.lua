@@ -49,6 +49,7 @@ return packer.startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	})
+    use({ 'scrooloose/nerdcommenter' })
 	-- use({ 'williamboman/mason.nvim', as = 'mason' })
 	use ({
 	    "williamboman/mason.nvim",
