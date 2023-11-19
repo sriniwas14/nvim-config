@@ -17,3 +17,4 @@ vim.opt.softtabstop = 4     -- Sets the number of columns for a TAB
 
 vim.opt.expandtab = true    -- Expand TABs to spaces
 
+vim.opt.swapfile = false

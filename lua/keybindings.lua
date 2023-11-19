@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>s', function() vim.cmd('BufferNext') end, opt)
 vim.keymap.set('n', '<leader>a', function() vim.cmd('BufferPrevious') end, opt)
 vim.keymap.set('n', '<leader>d', function() vim.cmd('bd | bprev') end, opt)
 vim.keymap.set('n', '<leader>qs', function() 
-		vim.cmd('SessPit') 
+		vim.cmd('SessPit')
 		print("Session Saved!")
 end, opt)
 
@@ -40,6 +40,17 @@ vim.keymap.set('n', 'z', '<C-w>w', {noremap = true, silent = true })
 
 -- ToggleTerm
 vim.keymap.set('n', 'tt', vim.cmd.ToggleTerm)
+
+-- Session
+
+-- restore the session for the current directory
+vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
+
+-- restore the last session
+vim.api.nvim_set_keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
+
+-- stop Persistence => session won't be saved on exit
+vim.api.nvim_set_keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {})
 
 -- Tab AutoComplete Lsp-zer
 

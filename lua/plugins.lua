@@ -44,6 +44,9 @@ return packer.startup(function(use)
 
 	-- INSTALL PACKAGES HERE
 	use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use({ 'joshdick/onedark.vim', as = 'onedark' })
+    use({ 'mhartington/oceanic-next', as = 'oceanic-next' })
+	use({ 'bluz71/vim-moonfly-color', as = 'vim-moonfly-colors' })
 	use({ 'nvim-lua/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} })
 	use({
 		'nvim-lualine/lualine.nvim',
@@ -57,11 +60,22 @@ return packer.startup(function(use)
 	    "neovim/nvim-lspconfig",
 	})
 
+        -- Session
+    use({
+      "folke/persistence.nvim",
+          as = "persistence",
+          event = "BufReadPre", -- this will only start session saving when an actual file was opened
+
+      })
+
 	use('prettier/vim-prettier')
 	use('w0rp/ale')
 	use('tpope/vim-fugitive')
+    use('airblade/vim-gitgutter')
 	use('mbbill/undotree')
+    use('ryanoasis/vim-devicons')
 	use('shougo/deoplete.nvim')
+    use({ 'apzelos/blamer.nvim', blamer_enabled = 1 })
 	use ({
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
@@ -89,11 +103,26 @@ return packer.startup(function(use)
 	    -- LSP Support
 	    {'neovim/nvim-lspconfig'},
 	    -- Autocompletion
-	    {'hrsh7th/nvim-cmp'},
-	    {'hrsh7th/cmp-nvim-lsp'},
+		{'hrsh7th/nvim-cmp'},
+		{'hrsh7th/cmp-nvim-lsp'},
 	    {'L3MON4D3/LuaSnip'},
 	  }
 	}
+
+	local cmp = require('cmp')
+		local cmp_action = require('lsp-zero').cmp_action()
+
+		cmp.setup({
+		  window = {
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		  },
+		  mapping = cmp.mapping.preset.insert({
+			['<Tab>'] = cmp_action.luasnip_supertab(),
+			['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+			['<C-Space>'] = cmp.mapping.complete(),
+		  })
+		})
 
 	-- Terminal
 	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
