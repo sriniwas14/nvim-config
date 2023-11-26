@@ -71,6 +71,7 @@ return packer.startup(function(use)
 	use('prettier/vim-prettier')
 	use('w0rp/ale')
 	use('tpope/vim-fugitive')
+
     use('airblade/vim-gitgutter')
 	use('mbbill/undotree')
     use('ryanoasis/vim-devicons')
